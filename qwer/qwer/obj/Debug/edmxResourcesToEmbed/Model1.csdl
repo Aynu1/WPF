@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="testPrimerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dolzgnost">
+    <Key>
+      <PropertyRef Name="ID_Dolzgnosti" />
+    </Key>
+    <Property Name="ID_Dolzgnosti" Type="Int32" Nullable="false" />
+    <Property Name="Dolzgnost1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Oklad" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Shtatnoe_raspisanie" Relationship="Self.FK_Shtatnoe_raspisanie_Dolzgnost" FromRole="Dolzgnost" ToRole="Shtatnoe_raspisanie" />
+    <NavigationProperty Name="Sotrudnikis" Relationship="Self.FK_Sotrudniki_Dolzgnost" FromRole="Dolzgnost" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="Med_obsledovaniya">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="Data_obsledovaniya" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Mesto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Zakluchenie_vracha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Med_obsledovaniya_Sotrudniki1" FromRole="Med_obsledovaniya" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="Otdel">
+    <Key>
+      <PropertyRef Name="kod_otdela" />
+    </Key>
+    <Property Name="kod_otdela" Type="Int32" Nullable="false" />
+    <Property Name="Name_otdela" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kabinet" Type="Double" Nullable="false" />
+    <Property Name="Phone_otdela" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Shtatnoe_raspisanie" Relationship="Self.FK_Shtatnoe_raspisanie_Otdel" FromRole="Otdel" ToRole="Shtatnoe_raspisanie" />
+    <NavigationProperty Name="Sotrudnikis" Relationship="Self.FK_Sotrudniki_Otdel" FromRole="Otdel" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="Otpuska">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Vid_otpuska" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="Data_otpuska" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Kolvo_dney" Type="Double" Nullable="false" />
+    <Property Name="Dni_dop" Type="Double" />
+    <Property Name="Data_okonchaniya" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Osnovaniya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Otpuska_Sotrudniki1" FromRole="Otpuska" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="Pasportnie_dannie">
+    <Key>
+      <PropertyRef Name="ID_Sotrudnika" />
+    </Key>
+    <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="Nomer_pasporta" Type="Double" Nullable="false" />
+    <Property Name="Seriya_pasporta" Type="Double" Nullable="false" />
+    <Property Name="Kem_vidan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kogda_vidan" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Pasportnie_dannie_Sotrudniki1" FromRole="Pasportnie_dannie" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="Pooshreniya">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="Motiv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Vid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Osnovaniya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Pooshreniya_Sotrudniki1" FromRole="Pooshreniya" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="Shtatnoe_raspisanie">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_Dolzgnosti" Type="Int32" Nullable="false" />
+    <Property Name="Kod_otdela" Type="Int32" Nullable="false" />
+    <Property Name="Kolvo_sotrudnikov" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Dolzgnost" Relationship="Self.FK_Shtatnoe_raspisanie_Dolzgnost" FromRole="Shtatnoe_raspisanie" ToRole="Dolzgnost" />
+    <NavigationProperty Name="Otdel" Relationship="Self.FK_Shtatnoe_raspisanie_Otdel" FromRole="Shtatnoe_raspisanie" ToRole="Otdel" />
+  </EntityType>
+  <EntityType Name="Sotrudniki">
+    <Key>
+      <PropertyRef Name="Id_Sotrudnika" />
+    </Key>
+    <Property Name="Id_Sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Second_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Semeynoe_polozhenie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Dolzgnosti" Type="Int32" />
+    <Property Name="Kod_otdela" Type="Int32" />
+    <Property Name="Date_birthday" Type="DateTime" Precision="0" />
+    <Property Name="Data_priema" Type="DateTime" Precision="0" />
+    <Property Name="Stazh" Type="Double" />
+    <Property Name="Telephone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Dolzgnost" Relationship="Self.FK_Sotrudniki_Dolzgnost" FromRole="Sotrudniki" ToRole="Dolzgnost" />
+    <NavigationProperty Name="Med_obsledovaniya" Relationship="Self.FK_Med_obsledovaniya_Sotrudniki1" FromRole="Sotrudniki" ToRole="Med_obsledovaniya" />
+    <NavigationProperty Name="Otdel" Relationship="Self.FK_Sotrudniki_Otdel" FromRole="Sotrudniki" ToRole="Otdel" />
+    <NavigationProperty Name="Otpuskas" Relationship="Self.FK_Otpuska_Sotrudniki1" FromRole="Sotrudniki" ToRole="Otpuska" />
+    <NavigationProperty Name="Pasportnie_dannie" Relationship="Self.FK_Pasportnie_dannie_Sotrudniki1" FromRole="Sotrudniki" ToRole="Pasportnie_dannie" />
+    <NavigationProperty Name="Pooshreniyas" Relationship="Self.FK_Pooshreniya_Sotrudniki1" FromRole="Sotrudniki" ToRole="Pooshreniya" />
+    <NavigationProperty Name="Komandirovkis" Relationship="Self.FK_Komandirovki_Sotrudniki1" FromRole="Sotrudniki" ToRole="Komandirovki" />
+    <NavigationProperty Name="Soc_lgoti" Relationship="Self.FK_Soc_lgoti_Sotrudniki1" FromRole="Sotrudniki" ToRole="Soc_lgoti" />
+    <NavigationProperty Name="Uvolneniyas" Relationship="Self.FK_Uvolneniya_Sotrudniki" FromRole="Sotrudniki" ToRole="Uvolneniya" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Komandirovki">
+    <Key>
+      <PropertyRef Name="ID_Sotrudnika" />
+      <PropertyRef Name="Kuda_komandirovan" />
+      <PropertyRef Name="nomer_prikaza" />
+      <PropertyRef Name="Date_prikaza" />
+      <PropertyRef Name="Date_nachala" />
+      <PropertyRef Name="Date_okonchaniya" />
+      <PropertyRef Name="Kolvo_dney" />
+      <PropertyRef Name="Cel_komandirovki" />
+    </Key>
+    <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="Kuda_komandirovan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nomer_prikaza" Type="Double" Nullable="false" />
+    <Property Name="Date_prikaza" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Date_nachala" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Date_okonchaniya" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Kolvo_dney" Type="Double" Nullable="false" />
+    <Property Name="Cel_komandirovki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Komandirovki_Sotrudniki1" FromRole="Komandirovki" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="Soc_lgoti">
+    <Key>
+      <PropertyRef Name="ID_Sotrudnika" />
+      <PropertyRef Name="Name_lgot" />
+      <PropertyRef Name="nomer_documenta" />
+      <PropertyRef Name="Data_vidachi_documenta" />
+    </Key>
+    <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="Name_lgot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nomer_documenta" Type="Double" Nullable="false" />
+    <Property Name="Data_vidachi_documenta" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Soc_lgoti_Sotrudniki1" FromRole="Soc_lgoti" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="Permission" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Uvolneniya">
+    <Key>
+      <PropertyRef Name="ID_Sotrudnika" />
+      <PropertyRef Name="Date_uvolneniya" />
+      <PropertyRef Name="Prichina" />
+    </Key>
+    <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="Date_uvolneniya" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Prichina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Uvolneniya_Sotrudniki" FromRole="Uvolneniya" ToRole="Sotrudniki" />
+  </EntityType>
+  <Association Name="FK_Shtatnoe_raspisanie_Dolzgnost">
+    <End Role="Dolzgnost" Type="Self.Dolzgnost" Multiplicity="1" />
+    <End Role="Shtatnoe_raspisanie" Type="Self.Shtatnoe_raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dolzgnost">
+        <PropertyRef Name="ID_Dolzgnosti" />
+      </Principal>
+      <Dependent Role="Shtatnoe_raspisanie">
+        <PropertyRef Name="ID_Dolzgnosti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sotrudniki_Dolzgnost">
+    <End Role="Dolzgnost" Type="Self.Dolzgnost" Multiplicity="0..1" />
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dolzgnost">
+        <PropertyRef Name="ID_Dolzgnosti" />
+      </Principal>
+      <Dependent Role="Sotrudniki">
+        <PropertyRef Name="ID_Dolzgnosti" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Med_obsledovaniya_Sotrudniki1">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+    <End Role="Med_obsledovaniya" Type="Self.Med_obsledovaniya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="Id_Sotrudnika" />
+      </Principal>
+      <Dependent Role="Med_obsledovaniya">
+        <PropertyRef Name="ID_Sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shtatnoe_raspisanie_Otdel">
+    <End Role="Otdel" Type="Self.Otdel" Multiplicity="1" />
+    <End Role="Shtatnoe_raspisanie" Type="Self.Shtatnoe_raspisanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otdel">
+        <PropertyRef Name="kod_otdela" />
+      </Principal>
+      <Dependent Role="Shtatnoe_raspisanie">
+        <PropertyRef Name="Kod_otdela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sotrudniki_Otdel">
+    <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otdel">
+        <PropertyRef Name="kod_otdela" />
+      </Principal>
+      <Dependent Role="Sotrudniki">
+        <PropertyRef Name="Kod_otdela" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Otpuska_Sotrudniki1">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+    <End Role="Otpuska" Type="Self.Otpuska" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="Id_Sotrudnika" />
+      </Principal>
+      <Dependent Role="Otpuska">
+        <PropertyRef Name="ID_sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pasportnie_dannie_Sotrudniki1">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+    <End Role="Pasportnie_dannie" Type="Self.Pasportnie_dannie" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="Id_Sotrudnika" />
+      </Principal>
+      <Dependent Role="Pasportnie_dannie">
+        <PropertyRef Name="ID_Sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pooshreniya_Sotrudniki1">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+    <End Role="Pooshreniya" Type="Self.Pooshreniya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="Id_Sotrudnika" />
+      </Principal>
+      <Dependent Role="Pooshreniya">
+        <PropertyRef Name="ID_Sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Komandirovki_Sotrudniki1">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+    <End Role="Komandirovki" Type="Self.Komandirovki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="Id_Sotrudnika" />
+      </Principal>
+      <Dependent Role="Komandirovki">
+        <PropertyRef Name="ID_Sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Soc_lgoti_Sotrudniki1">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+    <End Role="Soc_lgoti" Type="Self.Soc_lgoti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="Id_Sotrudnika" />
+      </Principal>
+      <Dependent Role="Soc_lgoti">
+        <PropertyRef Name="ID_Sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uvolneniya_Sotrudniki">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="1" />
+    <End Role="Uvolneniya" Type="Self.Uvolneniya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="Id_Sotrudnika" />
+      </Principal>
+      <Dependent Role="Uvolneniya">
+        <PropertyRef Name="ID_Sotrudnika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="testPrimerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dolzgnosts" EntityType="Self.Dolzgnost" />
+    <EntitySet Name="Med_obsledovaniya" EntityType="Self.Med_obsledovaniya" />
+    <EntitySet Name="Otdels" EntityType="Self.Otdel" />
+    <EntitySet Name="Otpuskas" EntityType="Self.Otpuska" />
+    <EntitySet Name="Pasportnie_dannie" EntityType="Self.Pasportnie_dannie" />
+    <EntitySet Name="Pooshreniyas" EntityType="Self.Pooshreniya" />
+    <EntitySet Name="Shtatnoe_raspisanie" EntityType="Self.Shtatnoe_raspisanie" />
+    <EntitySet Name="Sotrudnikis" EntityType="Self.Sotrudniki" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Komandirovkis" EntityType="Self.Komandirovki" />
+    <EntitySet Name="Soc_lgoti" EntityType="Self.Soc_lgoti" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Uvolneniyas" EntityType="Self.Uvolneniya" />
+    <AssociationSet Name="FK_Shtatnoe_raspisanie_Dolzgnost" Association="Self.FK_Shtatnoe_raspisanie_Dolzgnost">
+      <End Role="Dolzgnost" EntitySet="Dolzgnosts" />
+      <End Role="Shtatnoe_raspisanie" EntitySet="Shtatnoe_raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sotrudniki_Dolzgnost" Association="Self.FK_Sotrudniki_Dolzgnost">
+      <End Role="Dolzgnost" EntitySet="Dolzgnosts" />
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Med_obsledovaniya_Sotrudniki1" Association="Self.FK_Med_obsledovaniya_Sotrudniki1">
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+      <End Role="Med_obsledovaniya" EntitySet="Med_obsledovaniya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shtatnoe_raspisanie_Otdel" Association="Self.FK_Shtatnoe_raspisanie_Otdel">
+      <End Role="Otdel" EntitySet="Otdels" />
+      <End Role="Shtatnoe_raspisanie" EntitySet="Shtatnoe_raspisanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sotrudniki_Otdel" Association="Self.FK_Sotrudniki_Otdel">
+      <End Role="Otdel" EntitySet="Otdels" />
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Otpuska_Sotrudniki1" Association="Self.FK_Otpuska_Sotrudniki1">
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+      <End Role="Otpuska" EntitySet="Otpuskas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pasportnie_dannie_Sotrudniki1" Association="Self.FK_Pasportnie_dannie_Sotrudniki1">
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+      <End Role="Pasportnie_dannie" EntitySet="Pasportnie_dannie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pooshreniya_Sotrudniki1" Association="Self.FK_Pooshreniya_Sotrudniki1">
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+      <End Role="Pooshreniya" EntitySet="Pooshreniyas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Komandirovki_Sotrudniki1" Association="Self.FK_Komandirovki_Sotrudniki1">
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+      <End Role="Komandirovki" EntitySet="Komandirovkis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Soc_lgoti_Sotrudniki1" Association="Self.FK_Soc_lgoti_Sotrudniki1">
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+      <End Role="Soc_lgoti" EntitySet="Soc_lgoti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uvolneniya_Sotrudniki" Association="Self.FK_Uvolneniya_Sotrudniki">
+      <End Role="Sotrudniki" EntitySet="Sotrudnikis" />
+      <End Role="Uvolneniya" EntitySet="Uvolneniyas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

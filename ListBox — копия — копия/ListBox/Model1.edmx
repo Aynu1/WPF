@@ -1,0 +1,742 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище FlowersMagModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dostavka">
+          <Key>
+            <PropertyRef Name="DostavkaID" />
+          </Key>
+          <Property Name="DostavkaID" Type="int" Nullable="false" />
+          <Property Name="SposobDostavki" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flowers">
+          <Key>
+            <PropertyRef Name="FlowerID" />
+          </Key>
+          <Property Name="FlowerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naimenovanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDType" Type="int" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="IDPostavshika" Type="int" />
+          <Property Name="Kolichestvo" Type="int" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "FlowersMag.dbo.FlowerZakaz" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="FlowerZakaz">
+          <Key>
+            <PropertyRef Name="IDZakaza" />
+            <PropertyRef Name="Kolichestvo" />
+            <PropertyRef Name="FlowerID" />
+          </Key>
+          <Property Name="IDZakaza" Type="int" Nullable="false" />
+          <Property Name="Kolichestvo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlowerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Postavshik">
+          <Key>
+            <PropertyRef Name="IDPostavshika" />
+          </Key>
+          <Property Name="IDPostavshika" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sotrudnik">
+          <Key>
+            <PropertyRef Name="IDSotrudnika" />
+          </Key>
+          <Property Name="IDSotrudnika" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="passport" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SposobOplati">
+          <Key>
+            <PropertyRef Name="SposobOplatiID" />
+          </Key>
+          <Property Name="SposobOplatiID" Type="int" Nullable="false" />
+          <Property Name="SposobOplati" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientID" Type="int" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IDType" />
+          </Key>
+          <Property Name="IDType" Type="int" Nullable="false" />
+          <Property Name="Categoriya" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "FlowersMag.dbo.user" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="IDUslugi" />
+          </Key>
+          <Property Name="IDUslugi" Type="int" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prodolzhitelnost" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDSotrudnika" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "FlowersMag.dbo.UslugiZakaz" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="UslugiZakaz">
+          <Key>
+            <PropertyRef Name="IDZakaza" />
+            <PropertyRef Name="IDUslugi" />
+          </Key>
+          <Property Name="IDZakaza" Type="int" Nullable="false" />
+          <Property Name="IDUslugi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="IDZakaza" />
+          </Key>
+          <Property Name="IDZakaza" Type="int" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="ClientAdres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataZakaza" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataDostavki" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DostavkaID" Type="int" Nullable="false" />
+          <Property Name="DostavkaPrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Flowers_Postavshik">
+          <End Role="Postavshik" Type="Self.Postavshik" Multiplicity="0..1" />
+          <End Role="Flowers" Type="Self.Flowers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshik">
+              <PropertyRef Name="IDPostavshika" />
+            </Principal>
+            <Dependent Role="Flowers">
+              <PropertyRef Name="IDPostavshika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flowers_Type1">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Flowers" Type="Self.Flowers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="IDType" />
+            </Principal>
+            <Dependent Role="Flowers">
+              <PropertyRef Name="IDType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlowerZakaz_Flowers">
+          <End Role="Flowers" Type="Self.Flowers" Multiplicity="1" />
+          <End Role="FlowerZakaz" Type="Self.FlowerZakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flowers">
+              <PropertyRef Name="FlowerID" />
+            </Principal>
+            <Dependent Role="FlowerZakaz">
+              <PropertyRef Name="FlowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlowerZakaz_Zakaz">
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="1" />
+          <End Role="FlowerZakaz" Type="Self.FlowerZakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zakaz">
+              <PropertyRef Name="IDZakaza" />
+            </Principal>
+            <Dependent Role="FlowerZakaz">
+              <PropertyRef Name="IDZakaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SposobOplati_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="SposobOplati" Type="Self.SposobOplati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="SposobOplati">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uslugi_Sotrudnik">
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnik">
+              <PropertyRef Name="IDSotrudnika" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="IDSotrudnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UslugiZakaz_Uslugi">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="1" />
+          <End Role="UslugiZakaz" Type="Self.UslugiZakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="IDUslugi" />
+            </Principal>
+            <Dependent Role="UslugiZakaz">
+              <PropertyRef Name="IDUslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UslugiZakaz_Zakaz">
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="1" />
+          <End Role="UslugiZakaz" Type="Self.UslugiZakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zakaz">
+              <PropertyRef Name="IDZakaza" />
+            </Principal>
+            <Dependent Role="UslugiZakaz">
+              <PropertyRef Name="IDZakaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Dostavka">
+          <End Role="Dostavka" Type="Self.Dostavka" Multiplicity="1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dostavka">
+              <PropertyRef Name="DostavkaID" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="DostavkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище FlowersMagModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dostavka" EntityType="Self.Dostavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flowers" EntityType="Self.Flowers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavshik" EntityType="Self.Postavshik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudnik" EntityType="Self.Sotrudnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SposobOplati" EntityType="Self.SposobOplati" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlowerZakaz" EntityType="Self.FlowerZakaz" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FlowerZakaz].[IDZakaza] AS [IDZakaza], 
+    [FlowerZakaz].[Kolichestvo] AS [Kolichestvo], 
+    [FlowerZakaz].[FlowerID] AS [FlowerID]
+    FROM [dbo].[FlowerZakaz] AS [FlowerZakaz]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="user" EntityType="Self.user" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [user].[login] AS [login], 
+    [user].[password] AS [password]
+    FROM [dbo].[user] AS [user]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UslugiZakaz" EntityType="Self.UslugiZakaz" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UslugiZakaz].[IDZakaza] AS [IDZakaza], 
+    [UslugiZakaz].[IDUslugi] AS [IDUslugi]
+    FROM [dbo].[UslugiZakaz] AS [UslugiZakaz]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Flowers_Postavshik" Association="Self.FK_Flowers_Postavshik">
+            <End Role="Postavshik" EntitySet="Postavshik" />
+            <End Role="Flowers" EntitySet="Flowers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flowers_Type1" Association="Self.FK_Flowers_Type1">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Flowers" EntitySet="Flowers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlowerZakaz_Flowers" Association="Self.FK_FlowerZakaz_Flowers">
+            <End Role="Flowers" EntitySet="Flowers" />
+            <End Role="FlowerZakaz" EntitySet="FlowerZakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlowerZakaz_Zakaz" Association="Self.FK_FlowerZakaz_Zakaz">
+            <End Role="Zakaz" EntitySet="Zakaz" />
+            <End Role="FlowerZakaz" EntitySet="FlowerZakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SposobOplati_Client" Association="Self.FK_SposobOplati_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="SposobOplati" EntitySet="SposobOplati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uslugi_Sotrudnik" Association="Self.FK_Uslugi_Sotrudnik">
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UslugiZakaz_Uslugi" Association="Self.FK_UslugiZakaz_Uslugi">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="UslugiZakaz" EntitySet="UslugiZakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UslugiZakaz_Zakaz" Association="Self.FK_UslugiZakaz_Zakaz">
+            <End Role="Zakaz" EntitySet="Zakaz" />
+            <End Role="UslugiZakaz" EntitySet="UslugiZakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Client" Association="Self.FK_Zakaz_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Dostavka" Association="Self.FK_Zakaz_Dostavka">
+            <End Role="Dostavka" EntitySet="Dostavka" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FlowersMagModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SposobOplatis" Relationship="Self.FK_SposobOplati_Client" FromRole="Client" ToRole="SposobOplati" />
+          <NavigationProperty Name="Zakazs" Relationship="Self.FK_Zakaz_Client" FromRole="Client" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Dostavka">
+          <Key>
+            <PropertyRef Name="DostavkaID" />
+          </Key>
+          <Property Name="DostavkaID" Type="Int32" Nullable="false" />
+          <Property Name="SposobDostavki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zakazs" Relationship="Self.FK_Zakaz_Dostavka" FromRole="Dostavka" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Flower">
+          <Key>
+            <PropertyRef Name="FlowerID" />
+          </Key>
+          <Property Name="FlowerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naimenovanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Kolichestvo" Type="Int32" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Postavshik" Relationship="Self.FK_Flowers_Postavshik" FromRole="Flowers" ToRole="Postavshik" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_Flowers_Type1" FromRole="Flowers" ToRole="Type" />
+          <NavigationProperty Name="FlowerZakazs" Relationship="Self.FK_FlowerZakaz_Flowers" FromRole="Flowers" ToRole="FlowerZakaz" />
+        </EntityType>
+        <EntityType Name="Postavshik">
+          <Key>
+            <PropertyRef Name="IDPostavshika" />
+          </Key>
+          <Property Name="IDPostavshika" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Flowers" Relationship="Self.FK_Flowers_Postavshik" FromRole="Postavshik" ToRole="Flowers" />
+        </EntityType>
+        <EntityType Name="Sotrudnik">
+          <Key>
+            <PropertyRef Name="IDSotrudnika" />
+          </Key>
+          <Property Name="IDSotrudnika" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="passport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Uslugis" Relationship="Self.FK_Uslugi_Sotrudnik" FromRole="Sotrudnik" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="SposobOplati">
+          <Key>
+            <PropertyRef Name="SposobOplatiID" />
+          </Key>
+          <Property Name="SposobOplatiID" Type="Int32" Nullable="false" />
+          <Property Name="SposobOplati1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_SposobOplati_Client" FromRole="SposobOplati" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="IDType" />
+          </Key>
+          <Property Name="IDType" Type="Int32" Nullable="false" />
+          <Property Name="Categoriya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Flowers" Relationship="Self.FK_Flowers_Type1" FromRole="Type" ToRole="Flowers" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="IDUslugi" />
+          </Key>
+          <Property Name="IDUslugi" Type="Int32" Nullable="false" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prodolzhitelnost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sotrudnik" Relationship="Self.FK_Uslugi_Sotrudnik" FromRole="Uslugi" ToRole="Sotrudnik" />
+          <NavigationProperty Name="Zakazs" Relationship="Self.UslugiZakaz" FromRole="Uslugi" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="IDZakaza" />
+          </Key>
+          <Property Name="IDZakaza" Type="Int32" Nullable="false" />
+          <Property Name="ClientAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataZakaza" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataDostavki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DostavkaPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Zakaz_Client" FromRole="Zakaz" ToRole="Client" />
+          <NavigationProperty Name="Dostavka" Relationship="Self.FK_Zakaz_Dostavka" FromRole="Zakaz" ToRole="Dostavka" />
+          <NavigationProperty Name="FlowerZakazs" Relationship="Self.FK_FlowerZakaz_Zakaz" FromRole="Zakaz" ToRole="FlowerZakaz" />
+          <NavigationProperty Name="Uslugis" Relationship="Self.UslugiZakaz" FromRole="Zakaz" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="FlowerZakaz">
+          <Key>
+            <PropertyRef Name="IDZakaza" />
+            <PropertyRef Name="Kolichestvo" />
+            <PropertyRef Name="FlowerID" />
+          </Key>
+          <Property Name="IDZakaza" Type="Int32" Nullable="false" />
+          <Property Name="Kolichestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FlowerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Flower" Relationship="Self.FK_FlowerZakaz_Flowers" FromRole="FlowerZakaz" ToRole="Flowers" />
+          <NavigationProperty Name="Zakaz" Relationship="Self.FK_FlowerZakaz_Zakaz" FromRole="FlowerZakaz" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_SposobOplati_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="SposobOplati" Type="Self.SposobOplati" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Zakaz_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Zakaz_Dostavka">
+          <End Role="Dostavka" Type="Self.Dostavka" Multiplicity="1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Flowers_Postavshik">
+          <End Role="Postavshik" Type="Self.Postavshik" Multiplicity="0..1" />
+          <End Role="Flowers" Type="Self.Flower" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Flowers_Type1">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Flowers" Type="Self.Flower" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_FlowerZakaz_Flowers">
+          <End Role="Flowers" Type="Self.Flower" Multiplicity="1" />
+          <End Role="FlowerZakaz" Type="Self.FlowerZakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flowers">
+              <PropertyRef Name="FlowerID" />
+            </Principal>
+            <Dependent Role="FlowerZakaz">
+              <PropertyRef Name="FlowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uslugi_Sotrudnik">
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_FlowerZakaz_Zakaz">
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="1" />
+          <End Role="FlowerZakaz" Type="Self.FlowerZakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zakaz">
+              <PropertyRef Name="IDZakaza" />
+            </Principal>
+            <Dependent Role="FlowerZakaz">
+              <PropertyRef Name="IDZakaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UslugiZakaz">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="FlowersMagEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Dostavkas" EntityType="Self.Dostavka" />
+          <EntitySet Name="Flowers" EntityType="Self.Flower" />
+          <EntitySet Name="Postavshiks" EntityType="Self.Postavshik" />
+          <EntitySet Name="Sotrudniks" EntityType="Self.Sotrudnik" />
+          <EntitySet Name="SposobOplatis" EntityType="Self.SposobOplati" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <EntitySet Name="Uslugis" EntityType="Self.Uslugi" />
+          <EntitySet Name="Zakazs" EntityType="Self.Zakaz" />
+          <EntitySet Name="FlowerZakazs" EntityType="Self.FlowerZakaz" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_SposobOplati_Client" Association="Self.FK_SposobOplati_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="SposobOplati" EntitySet="SposobOplatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Client" Association="Self.FK_Zakaz_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Zakaz" EntitySet="Zakazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Dostavka" Association="Self.FK_Zakaz_Dostavka">
+            <End Role="Dostavka" EntitySet="Dostavkas" />
+            <End Role="Zakaz" EntitySet="Zakazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flowers_Postavshik" Association="Self.FK_Flowers_Postavshik">
+            <End Role="Postavshik" EntitySet="Postavshiks" />
+            <End Role="Flowers" EntitySet="Flowers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flowers_Type1" Association="Self.FK_Flowers_Type1">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Flowers" EntitySet="Flowers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlowerZakaz_Flowers" Association="Self.FK_FlowerZakaz_Flowers">
+            <End Role="Flowers" EntitySet="Flowers" />
+            <End Role="FlowerZakaz" EntitySet="FlowerZakazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uslugi_Sotrudnik" Association="Self.FK_Uslugi_Sotrudnik">
+            <End Role="Sotrudnik" EntitySet="Sotrudniks" />
+            <End Role="Uslugi" EntitySet="Uslugis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlowerZakaz_Zakaz" Association="Self.FK_FlowerZakaz_Zakaz">
+            <End Role="Zakaz" EntitySet="Zakazs" />
+            <End Role="FlowerZakaz" EntitySet="FlowerZakazs" />
+          </AssociationSet>
+          <AssociationSet Name="UslugiZakaz" Association="Self.UslugiZakaz">
+            <End Role="Uslugi" EntitySet="Uslugis" />
+            <End Role="Zakaz" EntitySet="Zakazs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище FlowersMagModelContainer" CdmEntityContainer="FlowersMagEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="FlowersMagModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dostavkas">
+            <EntityTypeMapping TypeName="FlowersMagModel.Dostavka">
+              <MappingFragment StoreEntitySet="Dostavka">
+                <ScalarProperty Name="DostavkaID" ColumnName="DostavkaID" />
+                <ScalarProperty Name="SposobDostavki" ColumnName="SposobDostavki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flowers">
+            <EntityTypeMapping TypeName="FlowersMagModel.Flower">
+              <MappingFragment StoreEntitySet="Flowers">
+                <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+                <ScalarProperty Name="Naimenovanie" ColumnName="Naimenovanie" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavshiks">
+            <EntityTypeMapping TypeName="FlowersMagModel.Postavshik">
+              <MappingFragment StoreEntitySet="Postavshik">
+                <ScalarProperty Name="IDPostavshika" ColumnName="IDPostavshika" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudniks">
+            <EntityTypeMapping TypeName="FlowersMagModel.Sotrudnik">
+              <MappingFragment StoreEntitySet="Sotrudnik">
+                <ScalarProperty Name="IDSotrudnika" ColumnName="IDSotrudnika" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="passport" ColumnName="passport" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SposobOplatis">
+            <EntityTypeMapping TypeName="FlowersMagModel.SposobOplati">
+              <MappingFragment StoreEntitySet="SposobOplati">
+                <ScalarProperty Name="SposobOplatiID" ColumnName="SposobOplatiID" />
+                <ScalarProperty Name="SposobOplati1" ColumnName="SposobOplati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="FlowersMagModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="IDType" ColumnName="IDType" />
+                <ScalarProperty Name="Categoriya" ColumnName="Categoriya" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uslugis">
+            <EntityTypeMapping TypeName="FlowersMagModel.Uslugi">
+              <MappingFragment StoreEntitySet="Uslugi">
+                <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="prodolzhitelnost" ColumnName="prodolzhitelnost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakazs">
+            <EntityTypeMapping TypeName="FlowersMagModel.Zakaz">
+              <MappingFragment StoreEntitySet="Zakaz">
+                <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+                <ScalarProperty Name="ClientAdres" ColumnName="ClientAdres" />
+                <ScalarProperty Name="ClientCity" ColumnName="ClientCity" />
+                <ScalarProperty Name="DataZakaza" ColumnName="DataZakaza" />
+                <ScalarProperty Name="DataDostavki" ColumnName="DataDostavki" />
+                <ScalarProperty Name="DostavkaPrice" ColumnName="DostavkaPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlowerZakazs">
+            <EntityTypeMapping TypeName="FlowersMagModel.FlowerZakaz">
+              <MappingFragment StoreEntitySet="FlowerZakaz">
+                <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+                <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+                <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="FlowersMagModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_SposobOplati_Client" TypeName="FlowersMagModel.FK_SposobOplati_Client" StoreEntitySet="SposobOplati">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            </EndProperty>
+            <EndProperty Name="SposobOplati">
+              <ScalarProperty Name="SposobOplatiID" ColumnName="SposobOplatiID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="ClientID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Zakaz_Client" TypeName="FlowersMagModel.FK_Zakaz_Client" StoreEntitySet="Zakaz">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+            </EndProperty>
+            <EndProperty Name="Zakaz">
+              <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Zakaz_Dostavka" TypeName="FlowersMagModel.FK_Zakaz_Dostavka" StoreEntitySet="Zakaz">
+            <EndProperty Name="Dostavka">
+              <ScalarProperty Name="DostavkaID" ColumnName="DostavkaID" />
+            </EndProperty>
+            <EndProperty Name="Zakaz">
+              <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Flowers_Postavshik" TypeName="FlowersMagModel.FK_Flowers_Postavshik" StoreEntitySet="Flowers">
+            <EndProperty Name="Postavshik">
+              <ScalarProperty Name="IDPostavshika" ColumnName="IDPostavshika" />
+            </EndProperty>
+            <EndProperty Name="Flowers">
+              <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="IDPostavshika" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Flowers_Type1" TypeName="FlowersMagModel.FK_Flowers_Type1" StoreEntitySet="Flowers">
+            <EndProperty Name="Type">
+              <ScalarProperty Name="IDType" ColumnName="IDType" />
+            </EndProperty>
+            <EndProperty Name="Flowers">
+              <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="IDType" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Uslugi_Sotrudnik" TypeName="FlowersMagModel.FK_Uslugi_Sotrudnik" StoreEntitySet="Uslugi">
+            <EndProperty Name="Sotrudnik">
+              <ScalarProperty Name="IDSotrudnika" ColumnName="IDSotrudnika" />
+            </EndProperty>
+            <EndProperty Name="Uslugi">
+              <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="IDSotrudnika" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UslugiZakaz" TypeName="FlowersMagModel.UslugiZakaz" StoreEntitySet="UslugiZakaz">
+            <EndProperty Name="Uslugi">
+              <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+            </EndProperty>
+            <EndProperty Name="Zakaz">
+              <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

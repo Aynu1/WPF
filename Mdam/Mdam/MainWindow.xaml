@@ -1,0 +1,26 @@
+﻿<Window x:Class="Mdam.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mdam"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#000025"/>
+        <Grid Background="#000025" Grid.Row="2"/>
+        <Image Source="/Resources/sha.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
+        <TextBlock Text="SarTelecom" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="#9a9a9a"/>
+        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <Button Grid.Row="0" Content="Назад" Height="30" Width="50" HorizontalAlignment="Right" Visibility="Visible" Click="Button_Click" x:Name="BtnBack"
+                Margin="0 0 10 0"/>
+            <Button Height="30" Width="60" HorizontalAlignment="Right" Margin="0 0 10 0" x:Name="AddBtn" Click="AddBtn_Click" Content="Добавить"/>
+        </StackPanel>
+    </Grid>
+</Window>

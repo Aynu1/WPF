@@ -1,0 +1,25 @@
+﻿<Window x:Class="Practice1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practice1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#000025">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="90" Width="800" Orientation="Horizontal">
+            <Image Source="/Resources/sha.png"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="450" Height="350">
+            <Label Content="Авторизоваться" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
+            <Label Content="Логин" Foreground="White" Width="200" Margin="0 10 0 10"/>
+            <TextBox x:Name="TbLogin" Width="200"/>
+            <Label Content="Пароль" Foreground="White" Width="200" Margin="0 10 0 10"/>
+            <PasswordBox Width="200" x:Name="TbPass"/>
+            <StackPanel Orientation="Horizontal" Margin="0 40" Height="30" HorizontalAlignment="Center">
+                <Button x:Name="BtnLogin" Width="50" Content="Войти" Margin="0 0 20 0" Click="BtnLogin_Click" Background="#10174e" Foreground="White"/>
+                <Button x:Name="BtnRegistration" Width="130" Content="Зарегистрироваться" Click="BtnRegistration_Click" Background="#10174e" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

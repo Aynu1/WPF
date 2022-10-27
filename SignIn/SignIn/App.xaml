@@ -1,0 +1,15 @@
+﻿<Application x:Class="SignIn.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SignIn"
+             StartupUri="LoginWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="Window" x:Key="baseWindow">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="MinHeight" Value="250"/>
+            <Setter Property="MinWidth" Value="400"/>
+            <Setter Property="Background" Value="#FFF"/>
+        </Style>
+    </Application.Resources>
+</Application>

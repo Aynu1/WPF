@@ -1,0 +1,41 @@
+﻿<Page x:Class="ListBox.Pages.GoodAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ListBox.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GoodAddPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="TextBlockFlowerId" Grid.Row="0" Grid.Column="0" Text="ID:" Height="40"/>
+        <TextBlock Text="Название заказа" Height="40" FontSize="20" Margin="5" Grid.Column="0" Grid.Row="1"/>
+        <TextBlock Text="Стоимость" FontSize="20" Height="40" Margin="5" Grid.Row="2"/>
+        <TextBlock Text="Количество" FontSize="20" Grid.Row="3" Height="40" Margin="5"/>
+        <TextBlock Text="Изображение" FontSize="20" Grid.Row="4" Height="40" Margin="5"/>
+        <TextBlock Text="Поставщик" FontSize="20" Grid.Row="5" Height="40" Margin="5"/>
+        <TextBox x:Name="TextBoxId" Grid.Column="1" Height="40" Width="350" Text="{Binding FlowerID }" IsReadOnly="True"/>
+        <TextBox x:Name="TxtNaimenovanie" Width="350" Height="40" Margin="5" Grid.Column="1" Grid.Row="1" Text="{Binding Naimenovanie}"/>
+        <TextBox x:Name="TxtPrice" Width="350" Height="40" Margin="5" Grid.Column="1" Grid.Row="2" Text="{Binding Price}"/>
+        <TextBox x:Name="TxtCount" Grid.Row="3" Grid.Column="1" Height="40" Width="350" Text="{Binding Kolichestvo}"/>
+        <Image x:Name="ImagePhoto" Source="{Binding Path=GetPhoto}" Grid.Row="4" Grid.Column="0" Width="60" Height="60" Margin="20,0"/>
+        <Button x:Name="LoagImage" Grid.Column="1" Grid.Row="4" Content="Загрузить" Height="40" Width="100" Background="Blue" Click="LoagImage_Click"/>
+        <ComboBox Name="CmbPostavchik" Grid.Column="1" Grid.Row="5" Height="40" Width="350" SelectedItem="{Binding Postavshik}" DisplayMemberPath="FIO" 
+                  SelectedValuePath="IDPostavshika" HorizontalAlignment="Left" Margin="20,0"/>
+        <Button x:Name="BtnSave" Grid.Row="6" Width="200" Height="40" Content="Сохранить" Background="Blue" Click="BtnSave_Click"/>
+    </Grid>
+</Page>

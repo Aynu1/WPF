@@ -1,0 +1,16 @@
+C:\Users\aynur\source\repos\унун\унун\bin\Debug\унун.exe.config
+C:\Users\aynur\source\repos\унун\унун\bin\Debug\унун.exe
+C:\Users\aynur\source\repos\унун\унун\bin\Debug\унун.pdb
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун.csproj.AssemblyReference.cache
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун.csproj.SuggestedBindingRedirects.cache
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\MainWindow.g.cs
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\App.g.cs
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун_MarkupCompile.cache
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун_MarkupCompile.lref
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\MainWindow.baml
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун.g.resources
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун.Properties.Resources.resources
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун.csproj.GenerateResource.cache
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун.csproj.CoreCompileInputs.cache
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун.exe
+C:\Users\aynur\source\repos\унун\унун\obj\Debug\унун.pdb

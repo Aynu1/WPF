@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bdb9d6e896084eb085da68effcd8e546" Name="Diagram1">
+        <EntityTypeShape EntityType="FlowersMagModel.Client" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.Dostavka" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.Flower" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.Postavshik" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.Sotrudnik" Width="1.5" PointX="1.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.SposobOplati" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.sysdiagram" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.Type" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.Uslugi" Width="1.5" PointX="3.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.Zakaz" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.FlowerZakaz" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersMagModel.user" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="FlowersMagModel.FK_SposobOplati_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersMagModel.FK_Zakaz_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersMagModel.FK_Zakaz_Dostavka" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersMagModel.FK_Flowers_Postavshik" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersMagModel.FK_Flowers_Type1" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersMagModel.FK_FlowerZakaz_Flowers" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersMagModel.FK_Uslugi_Sotrudnik" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersMagModel.FK_FlowerZakaz_Zakaz" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersMagModel.UslugiZakaz" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

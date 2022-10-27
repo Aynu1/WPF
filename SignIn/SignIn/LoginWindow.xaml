@@ -1,0 +1,35 @@
+﻿<Window x:Class="SignIn.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SignIn"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="450" Width="800" Style="{StaticResource baseWindow}" WindowStartupLocation="CenterScreen" Closing="Window_Closing" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FFE7"></Grid>
+        <Image Source="/Resources/Romashki.png" Margin="10" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="0" Text="Авторизация" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Логин" Margin="20,0" VerticalAlignment="Center" Width="100"></TextBlock>
+            <TextBox x:Name="TbLogin" Grid.Column="1" Width="200" Height="30"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="Пароль" Margin="20,0" VerticalAlignment="Center" Width="100" Grid.Column="0"></TextBlock>
+            <PasswordBox x:Name="TbPass" Height="30" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
+            <Button Width="100" Height="30" Name="BtnOk" Content="OK" Background="Aqua" Click="BtnOk_Click" Margin="5,0"></Button>
+            <Button Width="100" Height="30" x:Name="BtnCansel" Content="Cancel" Background="Aqua" Click="BtnCansel_Click" Margin="5,0"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

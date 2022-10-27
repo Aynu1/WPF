@@ -1,0 +1,18 @@
+﻿<Window x:Class="BookshopApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookshopApplication"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label HorizontalAlignment="Center" Content="База данных Книжный Магазин" Foreground="Blue"/>
+            <Button Content="Таблица Книги" Margin="0 0 0 5"/>
+            <Button Content="Таблица Каталоги"/>
+            <Button Content="Таблица Покупатели" Margin="0 5 0 5"/>
+            <Button Content="Таблица Заказы"/>
+        </StackPanel>
+    </Grid>
+</Window>

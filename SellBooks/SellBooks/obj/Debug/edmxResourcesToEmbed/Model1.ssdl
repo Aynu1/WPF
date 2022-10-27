@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ProdaSModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="Жанр">
+    <Key>
+      <PropertyRef Name="IdGenre" />
+    </Key>
+    <Property Name="IdGenre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Genre" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Издательство">
+    <Key>
+      <PropertyRef Name="IdPublish" />
+    </Key>
+    <Property Name="IdPublish" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="City" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Продажи">
+    <Key>
+      <PropertyRef Name="IdSell" />
+      <PropertyRef Name="IdGenre" />
+      <PropertyRef Name="IdPublish" />
+    </Key>
+    <Property Name="IdSell" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="NameBook" Type="varchar" MaxLength="60" />
+    <Property Name="Author" Type="varchar" MaxLength="50" />
+    <Property Name="IdGenre" Type="int" Nullable="false" />
+    <Property Name="IdPublish" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" />
+    <Property Name="DatePublish" Type="varchar" MaxLength="5" />
+    <Property Name="Photo" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_Продажи_Жанр">
+    <End Role="Жанр" Type="Self.Жанр" Multiplicity="1" />
+    <End Role="Продажи" Type="Self.Продажи" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Жанр">
+        <PropertyRef Name="IdGenre" />
+      </Principal>
+      <Dependent Role="Продажи">
+        <PropertyRef Name="IdGenre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Продажи_Издательство">
+    <End Role="Издательство" Type="Self.Издательство" Multiplicity="1" />
+    <End Role="Продажи" Type="Self.Продажи" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Издательство">
+        <PropertyRef Name="IdPublish" />
+      </Principal>
+      <Dependent Role="Продажи">
+        <PropertyRef Name="IdPublish" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ProdaSModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Жанр" EntityType="Self.Жанр" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Издательство" EntityType="Self.Издательство" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Продажи" EntityType="Self.Продажи" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Продажи_Жанр" Association="Self.FK_Продажи_Жанр">
+      <End Role="Жанр" EntitySet="Жанр" />
+      <End Role="Продажи" EntitySet="Продажи" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Продажи_Издательство" Association="Self.FK_Продажи_Издательство">
+      <End Role="Издательство" EntitySet="Издательство" />
+      <End Role="Продажи" EntitySet="Продажи" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

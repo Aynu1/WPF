@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище bookshopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="books">
+          <Key>
+            <PropertyRef Name="book_ID" />
+          </Key>
+          <Property Name="book_ID" Type="int" Nullable="false" />
+          <Property Name="b_name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="b_author" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="b_year" Type="int" Nullable="false" />
+          <Property Name="b_price" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="b_count" Type="int" />
+          <Property Name="b_cat_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="catalogs">
+          <Key>
+            <PropertyRef Name="cat_ID" />
+          </Key>
+          <Property Name="cat_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "bookshop.dbo.february" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="february">
+          <Key>
+            <PropertyRef Name="order_ID" />
+            <PropertyRef Name="o_user_ID" />
+            <PropertyRef Name="o_book_ID" />
+            <PropertyRef Name="o_time" />
+            <PropertyRef Name="o_number" />
+          </Key>
+          <Property Name="order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="o_user_ID" Type="int" Nullable="false" />
+          <Property Name="o_book_ID" Type="int" Nullable="false" />
+          <Property Name="o_time" Type="datetime" Nullable="false" />
+          <Property Name="o_number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="order_ID" />
+          </Key>
+          <Property Name="order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="o_user_ID" Type="int" Nullable="false" />
+          <Property Name="o_book_ID" Type="int" Nullable="false" />
+          <Property Name="o_time" Type="datetime" Nullable="false" />
+          <Property Name="o_number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProductCount" Type="int" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_phone" Type="nvarchar" MaxLength="12" />
+          <Property Name="u_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="u_status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_books_catalogs">
+          <End Role="catalogs" Type="Self.catalogs" Multiplicity="1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalogs">
+              <PropertyRef Name="cat_ID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="b_cat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_books">
+          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="books">
+              <PropertyRef Name="book_ID" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="o_book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="o_user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище bookshopModelContainer">
+          <EntitySet Name="books" EntityType="Self.books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catalogs" EntityType="Self.catalogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="february" EntityType="Self.february" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [february].[order_ID] AS [order_ID], 
+    [february].[o_user_ID] AS [o_user_ID], 
+    [february].[o_book_ID] AS [o_book_ID], 
+    [february].[o_time] AS [o_time], 
+    [february].[o_number] AS [o_number]
+    FROM [dbo].[february] AS [february]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_books_catalogs" Association="Self.FK_books_catalogs">
+            <End Role="catalogs" EntitySet="catalogs" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_books" Association="Self.FK_orders_books">
+            <End Role="books" EntitySet="books" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_users" Association="Self.FK_orders_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bookshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="book_ID" />
+          </Key>
+          <Property Name="book_ID" Type="Int32" Nullable="false" />
+          <Property Name="b_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="b_author" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="b_year" Type="Int32" Nullable="false" />
+          <Property Name="b_price" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="b_count" Type="Int32" />
+          <NavigationProperty Name="catalog" Relationship="Self.FK_books_catalogs" FromRole="books" ToRole="catalogs" />
+          <NavigationProperty Name="orders" Relationship="Self.FK_orders_books" FromRole="books" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="catalog">
+          <Key>
+            <PropertyRef Name="cat_ID" />
+          </Key>
+          <Property Name="cat_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="books" Relationship="Self.FK_books_catalogs" FromRole="catalogs" ToRole="books" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="order_ID" />
+          </Key>
+          <Property Name="order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="o_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="o_number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="book" Relationship="Self.FK_orders_books" FromRole="orders" ToRole="books" />
+          <NavigationProperty Name="user" Relationship="Self.FK_orders_users" FromRole="orders" ToRole="users" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCount" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="u_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="u_status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="orders" Relationship="Self.FK_orders_users" FromRole="users" ToRole="orders" />
+        </EntityType>
+        <EntityType Name="february">
+          <Key>
+            <PropertyRef Name="order_ID" />
+            <PropertyRef Name="o_user_ID" />
+            <PropertyRef Name="o_book_ID" />
+            <PropertyRef Name="o_time" />
+            <PropertyRef Name="o_number" />
+          </Key>
+          <Property Name="order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="o_user_ID" Type="Int32" Nullable="false" />
+          <Property Name="o_book_ID" Type="Int32" Nullable="false" />
+          <Property Name="o_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="o_number" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_books_catalogs">
+          <End Role="catalogs" Type="Self.catalog" Multiplicity="1" />
+          <End Role="books" Type="Self.book" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_orders_books">
+          <End Role="books" Type="Self.book" Multiplicity="1" />
+          <End Role="orders" Type="Self.order" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_orders_users">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="orders" Type="Self.order" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="bookshopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="books" EntityType="Self.book" />
+          <EntitySet Name="catalogs" EntityType="Self.catalog" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="februaries" EntityType="Self.february" />
+          <AssociationSet Name="FK_books_catalogs" Association="Self.FK_books_catalogs">
+            <End Role="catalogs" EntitySet="catalogs" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_books" Association="Self.FK_orders_books">
+            <End Role="books" EntitySet="books" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_users" Association="Self.FK_orders_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище bookshopModelContainer" CdmEntityContainer="bookshopEntities">
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="bookshopModel.book">
+              <MappingFragment StoreEntitySet="books">
+                <ScalarProperty Name="book_ID" ColumnName="book_ID" />
+                <ScalarProperty Name="b_name" ColumnName="b_name" />
+                <ScalarProperty Name="b_author" ColumnName="b_author" />
+                <ScalarProperty Name="b_year" ColumnName="b_year" />
+                <ScalarProperty Name="b_price" ColumnName="b_price" />
+                <ScalarProperty Name="b_count" ColumnName="b_count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catalogs">
+            <EntityTypeMapping TypeName="bookshopModel.catalog">
+              <MappingFragment StoreEntitySet="catalogs">
+                <ScalarProperty Name="cat_ID" ColumnName="cat_ID" />
+                <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="bookshopModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="order_ID" ColumnName="order_ID" />
+                <ScalarProperty Name="o_time" ColumnName="o_time" />
+                <ScalarProperty Name="o_number" ColumnName="o_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="bookshopModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bookshopModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="bookshopModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_patronymic" ColumnName="u_patronymic" />
+                <ScalarProperty Name="u_surname" ColumnName="u_surname" />
+                <ScalarProperty Name="u_phone" ColumnName="u_phone" />
+                <ScalarProperty Name="u_email" ColumnName="u_email" />
+                <ScalarProperty Name="u_status" ColumnName="u_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="februaries">
+            <EntityTypeMapping TypeName="bookshopModel.february">
+              <MappingFragment StoreEntitySet="february">
+                <ScalarProperty Name="order_ID" ColumnName="order_ID" />
+                <ScalarProperty Name="o_user_ID" ColumnName="o_user_ID" />
+                <ScalarProperty Name="o_book_ID" ColumnName="o_book_ID" />
+                <ScalarProperty Name="o_time" ColumnName="o_time" />
+                <ScalarProperty Name="o_number" ColumnName="o_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_books_catalogs" TypeName="bookshopModel.FK_books_catalogs" StoreEntitySet="books">
+            <EndProperty Name="catalogs">
+              <ScalarProperty Name="cat_ID" ColumnName="b_cat_ID" />
+            </EndProperty>
+            <EndProperty Name="books">
+              <ScalarProperty Name="book_ID" ColumnName="book_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_orders_books" TypeName="bookshopModel.FK_orders_books" StoreEntitySet="orders">
+            <EndProperty Name="books">
+              <ScalarProperty Name="book_ID" ColumnName="o_book_ID" />
+            </EndProperty>
+            <EndProperty Name="orders">
+              <ScalarProperty Name="order_ID" ColumnName="order_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_orders_users" TypeName="bookshopModel.FK_orders_users" StoreEntitySet="orders">
+            <EndProperty Name="users">
+              <ScalarProperty Name="user_ID" ColumnName="o_user_ID" />
+            </EndProperty>
+            <EndProperty Name="orders">
+              <ScalarProperty Name="order_ID" ColumnName="order_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

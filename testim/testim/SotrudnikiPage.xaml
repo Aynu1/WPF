@@ -1,0 +1,29 @@
+﻿<Page x:Class="testim.SotrudnikiPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:testim"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SotrudnikiPage">
+
+    <Grid>
+        <DataGrid x:Name="Vivod" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="100" Header="Изображение">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=GetPhoto}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Second_name}" Header="Имя"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding Surname}" Header="Отчество"/>
+                <DataGridTextColumn Binding="{Binding Pol}" Header="Пол"/>
+                <DataGridTextColumn Binding="{Binding Stazh}" Header="Стаж"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

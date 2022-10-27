@@ -1,0 +1,7 @@
+C:\Users\aynur\source\repos\GI\GI\obj\Debug\GI.csproj.AssemblyReference.cache
+C:\Users\aynur\source\repos\GI\GI\obj\Debug\GI.csproj.SuggestedBindingRedirects.cache
+C:\Users\aynur\source\repos\GI\GI\obj\Debug\MainWindow.g.cs
+C:\Users\aynur\source\repos\GI\GI\obj\Debug\Pages\Fpifok.g.cs
+C:\Users\aynur\source\repos\GI\GI\obj\Debug\App.g.cs
+C:\Users\aynur\source\repos\GI\GI\obj\Debug\GI_MarkupCompile.cache
+C:\Users\aynur\source\repos\GI\GI\obj\Debug\GI_MarkupCompile.lref

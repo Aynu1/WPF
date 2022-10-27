@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище testPrimerModelContainer" CdmEntityContainer="testPrimerEntities">
+    <EntitySetMapping Name="Dolzgnosts">
+      <EntityTypeMapping TypeName="testPrimerModel.Dolzgnost">
+        <MappingFragment StoreEntitySet="Dolzgnost">
+          <ScalarProperty Name="ID_Dolzgnosti" ColumnName="ID_Dolzgnosti" />
+          <ScalarProperty Name="Dolzgnost1" ColumnName="Dolzgnost" />
+          <ScalarProperty Name="Oklad" ColumnName="Oklad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Med_obsledovaniya">
+      <EntityTypeMapping TypeName="testPrimerModel.Med_obsledovaniya">
+        <MappingFragment StoreEntitySet="Med_obsledovaniya">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+          <ScalarProperty Name="Data_obsledovaniya" ColumnName="Data_obsledovaniya" />
+          <ScalarProperty Name="Mesto" ColumnName="Mesto" />
+          <ScalarProperty Name="Zakluchenie_vracha" ColumnName="Zakluchenie_vracha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otdels">
+      <EntityTypeMapping TypeName="testPrimerModel.Otdel">
+        <MappingFragment StoreEntitySet="Otdel">
+          <ScalarProperty Name="kod_otdela" ColumnName="kod_otdela" />
+          <ScalarProperty Name="Name_otdela" ColumnName="Name_otdela" />
+          <ScalarProperty Name="Kabinet" ColumnName="Kabinet" />
+          <ScalarProperty Name="Phone_otdela" ColumnName="Phone_otdela" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otpuskas">
+      <EntityTypeMapping TypeName="testPrimerModel.Otpuska">
+        <MappingFragment StoreEntitySet="Otpuska">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Vid_otpuska" ColumnName="Vid_otpuska" />
+          <ScalarProperty Name="ID_sotrudnika" ColumnName="ID_sotrudnika" />
+          <ScalarProperty Name="Data_otpuska" ColumnName="Data_otpuska" />
+          <ScalarProperty Name="Kolvo_dney" ColumnName="Kolvo_dney" />
+          <ScalarProperty Name="Dni_dop" ColumnName="Dni_dop" />
+          <ScalarProperty Name="Data_okonchaniya" ColumnName="Data_okonchaniya" />
+          <ScalarProperty Name="Osnovaniya" ColumnName="Osnovaniya" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pasportnie_dannie">
+      <EntityTypeMapping TypeName="testPrimerModel.Pasportnie_dannie">
+        <MappingFragment StoreEntitySet="Pasportnie_dannie">
+          <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+          <ScalarProperty Name="Nomer_pasporta" ColumnName="Nomer_pasporta" />
+          <ScalarProperty Name="Seriya_pasporta" ColumnName="Seriya_pasporta" />
+          <ScalarProperty Name="Kem_vidan" ColumnName="Kem_vidan" />
+          <ScalarProperty Name="Kogda_vidan" ColumnName="Kogda_vidan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pooshreniyas">
+      <EntityTypeMapping TypeName="testPrimerModel.Pooshreniya">
+        <MappingFragment StoreEntitySet="Pooshreniya">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+          <ScalarProperty Name="Motiv" ColumnName="Motiv" />
+          <ScalarProperty Name="Vid" ColumnName="Vid" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Osnovaniya" ColumnName="Osnovaniya" />
+          <ScalarProperty Name="Summa" ColumnName="Summa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shtatnoe_raspisanie">
+      <EntityTypeMapping TypeName="testPrimerModel.Shtatnoe_raspisanie">
+        <MappingFragment StoreEntitySet="Shtatnoe_raspisanie">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Dolzgnosti" ColumnName="ID_Dolzgnosti" />
+          <ScalarProperty Name="Kod_otdela" ColumnName="Kod_otdela" />
+          <ScalarProperty Name="Kolvo_sotrudnikov" ColumnName="Kolvo_sotrudnikov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotrudnikis">
+      <EntityTypeMapping TypeName="testPrimerModel.Sotrudniki">
+        <MappingFragment StoreEntitySet="Sotrudniki">
+          <ScalarProperty Name="Id_Sotrudnika" ColumnName="Id_Sotrudnika" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Second_name" ColumnName="Second_name" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Pol" ColumnName="Pol" />
+          <ScalarProperty Name="Semeynoe_polozhenie" ColumnName="Semeynoe_polozhenie" />
+          <ScalarProperty Name="ID_Dolzgnosti" ColumnName="ID_Dolzgnosti" />
+          <ScalarProperty Name="Kod_otdela" ColumnName="Kod_otdela" />
+          <ScalarProperty Name="Date_birthday" ColumnName="Date_birthday" />
+          <ScalarProperty Name="Data_priema" ColumnName="Data_priema" />
+          <ScalarProperty Name="Stazh" ColumnName="Stazh" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="testPrimerModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Komandirovkis">
+      <EntityTypeMapping TypeName="testPrimerModel.Komandirovki">
+        <MappingFragment StoreEntitySet="Komandirovki">
+          <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+          <ScalarProperty Name="Kuda_komandirovan" ColumnName="Kuda_komandirovan" />
+          <ScalarProperty Name="nomer_prikaza" ColumnName="nomer_prikaza" />
+          <ScalarProperty Name="Date_prikaza" ColumnName="Date_prikaza" />
+          <ScalarProperty Name="Date_nachala" ColumnName="Date_nachala" />
+          <ScalarProperty Name="Date_okonchaniya" ColumnName="Date_okonchaniya" />
+          <ScalarProperty Name="Kolvo_dney" ColumnName="Kolvo_dney" />
+          <ScalarProperty Name="Cel_komandirovki" ColumnName="Cel_komandirovki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Soc_lgoti">
+      <EntityTypeMapping TypeName="testPrimerModel.Soc_lgoti">
+        <MappingFragment StoreEntitySet="Soc_lgoti">
+          <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+          <ScalarProperty Name="Name_lgot" ColumnName="Name_lgot" />
+          <ScalarProperty Name="nomer_documenta" ColumnName="nomer_documenta" />
+          <ScalarProperty Name="Data_vidachi_documenta" ColumnName="Data_vidachi_documenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="testPrimerModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Permission" ColumnName="Permission" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uvolneniyas">
+      <EntityTypeMapping TypeName="testPrimerModel.Uvolneniya">
+        <MappingFragment StoreEntitySet="Uvolneniya">
+          <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+          <ScalarProperty Name="Date_uvolneniya" ColumnName="Date_uvolneniya" />
+          <ScalarProperty Name="Prichina" ColumnName="Prichina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PractaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Заказ">
+    <Key>
+      <PropertyRef Name="NumberOrder" />
+    </Key>
+    <Property Name="NumberOrder" Type="Int32" Nullable="false" />
+    <Property Name="Duration" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdClient" Type="Int32" />
+    <Property Name="Id_Yslugi" Type="Int32" />
+    <Property Name="IdEmployee" Type="Int32" />
+    <Property Name="DateConclusion" Type="Int32" />
+    <Property Name="Photo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Клиент" Relationship="Self.FK_Заказ_Клиент" FromRole="Заказ" ToRole="Клиент" />
+    <NavigationProperty Name="Сотрудники" Relationship="Self.FK_Заказ_Сотрудники" FromRole="Заказ" ToRole="Сотрудники" />
+    <NavigationProperty Name="Услуги" Relationship="Self.FK_Заказ_Услуги" FromRole="Заказ" ToRole="Услуги" />
+    <NavigationProperty Name="Счет" Relationship="Self.FK_Счет_Заказ" FromRole="Заказ" ToRole="Счет" />
+  </EntityType>
+  <EntityType Name="Клиент">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="Int32" Nullable="false" />
+    <Property Name="NameOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Клиент" FromRole="Клиент" ToRole="Заказ" />
+  </EntityType>
+  <EntityType Name="Оборудование">
+    <Key>
+      <PropertyRef Name="IDEquipment" />
+    </Key>
+    <Property Name="IDEquipment" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Processor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RAM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DiskArray" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="NetworkCard" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="VideoCard" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ProcessorClockSpeed" Type="Double" />
+    <Property Name="TotalPhysicalMemory" Type="Int32" />
+    <Property Name="AmountRAM" Type="Int32" />
+    <NavigationProperty Name="Услуги" Relationship="Self.FK_Услуги_Оборудование" FromRole="Оборудование" ToRole="Услуги" />
+  </EntityType>
+  <EntityType Name="Оплата">
+    <Key>
+      <PropertyRef Name="IdPayment" />
+    </Key>
+    <Property Name="IdPayment" Type="Int32" Nullable="false" />
+    <Property Name="DatePayment" Type="DateTime" Precision="0" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="NumberAccount" Type="Int32" />
+    <NavigationProperty Name="Счет" Relationship="Self.FK_Оплата_Счет" FromRole="Оплата" ToRole="Счет" />
+  </EntityType>
+  <EntityType Name="Сотрудники">
+    <Key>
+      <PropertyRef Name="IdEmployee" />
+    </Key>
+    <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Сотрудники" FromRole="Сотрудники" ToRole="Заказ" />
+  </EntityType>
+  <EntityType Name="Счет">
+    <Key>
+      <PropertyRef Name="NumberAccount" />
+    </Key>
+    <Property Name="NumberAccount" Type="Int32" Nullable="false" />
+    <Property Name="DateDischarge" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AmountPaid" Type="Double" />
+    <Property Name="NotePayment" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="NumberOrder" Type="Int32" />
+    <NavigationProperty Name="Заказ" Relationship="Self.FK_Счет_Заказ" FromRole="Счет" ToRole="Заказ" />
+    <NavigationProperty Name="Оплата" Relationship="Self.FK_Оплата_Счет" FromRole="Счет" ToRole="Оплата" />
+  </EntityType>
+  <EntityType Name="Услуги">
+    <Key>
+      <PropertyRef Name="Id_Yslugi" />
+    </Key>
+    <Property Name="Id_Yslugi" Type="Int32" Nullable="false" />
+    <Property Name="PriceMonth" Type="Double" />
+    <Property Name="TypeService" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdEquipment" Type="Int32" />
+    <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Услуги" FromRole="Услуги" ToRole="Заказ" />
+    <NavigationProperty Name="Оборудование" Relationship="Self.FK_Услуги_Оборудование" FromRole="Услуги" ToRole="Оборудование" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Заказ_Клиент">
+    <End Role="Клиент" Type="Self.Клиент" Multiplicity="0..1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиент">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказ_Сотрудники">
+    <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудники">
+        <PropertyRef Name="IdEmployee" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказ_Услуги">
+    <End Role="Услуги" Type="Self.Услуги" Multiplicity="0..1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Услуги">
+        <PropertyRef Name="Id_Yslugi" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="Id_Yslugi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Счет_Заказ">
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="0..1" />
+    <End Role="Счет" Type="Self.Счет" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заказ">
+        <PropertyRef Name="NumberOrder" />
+      </Principal>
+      <Dependent Role="Счет">
+        <PropertyRef Name="NumberOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Услуги_Оборудование">
+    <End Role="Оборудование" Type="Self.Оборудование" Multiplicity="0..1" />
+    <End Role="Услуги" Type="Self.Услуги" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Оборудование">
+        <PropertyRef Name="IDEquipment" />
+      </Principal>
+      <Dependent Role="Услуги">
+        <PropertyRef Name="IdEquipment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Оплата_Счет">
+    <End Role="Счет" Type="Self.Счет" Multiplicity="0..1" />
+    <End Role="Оплата" Type="Self.Оплата" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Счет">
+        <PropertyRef Name="NumberAccount" />
+      </Principal>
+      <Dependent Role="Оплата">
+        <PropertyRef Name="NumberAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PractaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Заказ" EntityType="Self.Заказ" />
+    <EntitySet Name="Клиент" EntityType="Self.Клиент" />
+    <EntitySet Name="Оборудование" EntityType="Self.Оборудование" />
+    <EntitySet Name="Оплата" EntityType="Self.Оплата" />
+    <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" />
+    <EntitySet Name="Счет" EntityType="Self.Счет" />
+    <EntitySet Name="Услуги" EntityType="Self.Услуги" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Заказ_Клиент" Association="Self.FK_Заказ_Клиент">
+      <End Role="Клиент" EntitySet="Клиент" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказ_Сотрудники" Association="Self.FK_Заказ_Сотрудники">
+      <End Role="Сотрудники" EntitySet="Сотрудники" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказ_Услуги" Association="Self.FK_Заказ_Услуги">
+      <End Role="Услуги" EntitySet="Услуги" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Счет_Заказ" Association="Self.FK_Счет_Заказ">
+      <End Role="Заказ" EntitySet="Заказ" />
+      <End Role="Счет" EntitySet="Счет" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Услуги_Оборудование" Association="Self.FK_Услуги_Оборудование">
+      <End Role="Оборудование" EntitySet="Оборудование" />
+      <End Role="Услуги" EntitySet="Услуги" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Оплата_Счет" Association="Self.FK_Оплата_Счет">
+      <End Role="Счет" EntitySet="Счет" />
+      <End Role="Оплата" EntitySet="Оплата" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

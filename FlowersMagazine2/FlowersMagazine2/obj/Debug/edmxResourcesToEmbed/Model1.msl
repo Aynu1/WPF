@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище FlowersMagModelContainer" CdmEntityContainer="FlowersMagEntities">
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="FlowersMagModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dostavka">
+      <EntityTypeMapping TypeName="FlowersMagModel.Dostavka">
+        <MappingFragment StoreEntitySet="Dostavka">
+          <ScalarProperty Name="DostavkaID" ColumnName="DostavkaID" />
+          <ScalarProperty Name="SposobDostavki" ColumnName="SposobDostavki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flowers">
+      <EntityTypeMapping TypeName="FlowersMagModel.Flowers">
+        <MappingFragment StoreEntitySet="Flowers">
+          <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+          <ScalarProperty Name="Naimenovanie" ColumnName="Naimenovanie" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Postavshik">
+      <EntityTypeMapping TypeName="FlowersMagModel.Postavshik">
+        <MappingFragment StoreEntitySet="Postavshik">
+          <ScalarProperty Name="IDPostavshika" ColumnName="IDPostavshika" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotrudnik">
+      <EntityTypeMapping TypeName="FlowersMagModel.Sotrudnik">
+        <MappingFragment StoreEntitySet="Sotrudnik">
+          <ScalarProperty Name="IDSotrudnika" ColumnName="IDSotrudnika" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="passport" ColumnName="passport" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SposobOplati">
+      <EntityTypeMapping TypeName="FlowersMagModel.SposobOplati">
+        <MappingFragment StoreEntitySet="SposobOplati">
+          <ScalarProperty Name="SposobOplatiID" ColumnName="SposobOplatiID" />
+          <ScalarProperty Name="SposobOplati1" ColumnName="SposobOplati" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FlowersMagModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type">
+      <EntityTypeMapping TypeName="FlowersMagModel.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="IDType" ColumnName="IDType" />
+          <ScalarProperty Name="Categoriya" ColumnName="Categoriya" />
+          <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uslugi">
+      <EntityTypeMapping TypeName="FlowersMagModel.Uslugi">
+        <MappingFragment StoreEntitySet="Uslugi">
+          <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+          <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="prodolzhitelnost" ColumnName="prodolzhitelnost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zakaz">
+      <EntityTypeMapping TypeName="FlowersMagModel.Zakaz">
+        <MappingFragment StoreEntitySet="Zakaz">
+          <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+          <ScalarProperty Name="ClientAdres" ColumnName="ClientAdres" />
+          <ScalarProperty Name="ClientCity" ColumnName="ClientCity" />
+          <ScalarProperty Name="DataZakaza" ColumnName="DataZakaza" />
+          <ScalarProperty Name="DataDostavki" ColumnName="DataDostavki" />
+          <ScalarProperty Name="DostavkaPrice" ColumnName="DostavkaPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlowerZakaz">
+      <EntityTypeMapping TypeName="FlowersMagModel.FlowerZakaz">
+        <MappingFragment StoreEntitySet="FlowerZakaz">
+          <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+          <ScalarProperty Name="Kolichestvo" ColumnName="Kolichestvo" />
+          <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="FlowersMagModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_SposobOplati_Client" TypeName="FlowersMagModel.FK_SposobOplati_Client" StoreEntitySet="SposobOplati">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+      </EndProperty>
+      <EndProperty Name="SposobOplati">
+        <ScalarProperty Name="SposobOplatiID" ColumnName="SposobOplatiID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="ClientID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Zakaz_Client" TypeName="FlowersMagModel.FK_Zakaz_Client" StoreEntitySet="Zakaz">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+      </EndProperty>
+      <EndProperty Name="Zakaz">
+        <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Zakaz_Dostavka" TypeName="FlowersMagModel.FK_Zakaz_Dostavka" StoreEntitySet="Zakaz">
+      <EndProperty Name="Dostavka">
+        <ScalarProperty Name="DostavkaID" ColumnName="DostavkaID" />
+      </EndProperty>
+      <EndProperty Name="Zakaz">
+        <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Flowers_Postavshik" TypeName="FlowersMagModel.FK_Flowers_Postavshik" StoreEntitySet="Flowers">
+      <EndProperty Name="Postavshik">
+        <ScalarProperty Name="IDPostavshika" ColumnName="IDPostavshika" />
+      </EndProperty>
+      <EndProperty Name="Flowers">
+        <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="IDPostavshika" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Flowers_Type1" TypeName="FlowersMagModel.FK_Flowers_Type1" StoreEntitySet="Flowers">
+      <EndProperty Name="Type">
+        <ScalarProperty Name="IDType" ColumnName="IDType" />
+      </EndProperty>
+      <EndProperty Name="Flowers">
+        <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="IDType" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Uslugi_Sotrudnik" TypeName="FlowersMagModel.FK_Uslugi_Sotrudnik" StoreEntitySet="Uslugi">
+      <EndProperty Name="Sotrudnik">
+        <ScalarProperty Name="IDSotrudnika" ColumnName="IDSotrudnika" />
+      </EndProperty>
+      <EndProperty Name="Uslugi">
+        <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="IDSotrudnika" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UslugiZakaz" TypeName="FlowersMagModel.UslugiZakaz" StoreEntitySet="UslugiZakaz">
+      <EndProperty Name="Uslugi">
+        <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+      </EndProperty>
+      <EndProperty Name="Zakaz">
+        <ScalarProperty Name="IDZakaza" ColumnName="IDZakaza" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

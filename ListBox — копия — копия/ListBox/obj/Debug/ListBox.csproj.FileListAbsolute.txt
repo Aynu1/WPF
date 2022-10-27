@@ -1,0 +1,67 @@
+C:\Users\aynur\source\repos\ListBox\ListBox\bin\Debug\ListBox.exe.config
+C:\Users\aynur\source\repos\ListBox\ListBox\bin\Debug\ListBox.exe
+C:\Users\aynur\source\repos\ListBox\ListBox\bin\Debug\ListBox.pdb
+C:\Users\aynur\source\repos\ListBox\ListBox\bin\Debug\EntityFramework.dll
+C:\Users\aynur\source\repos\ListBox\ListBox\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aynur\source\repos\ListBox\ListBox\bin\Debug\EntityFramework.xml
+C:\Users\aynur\source\repos\ListBox\ListBox\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aynur\source\repos\ListBox\ListBox\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.csproj.AssemblyReference.cache
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.csproj.SuggestedBindingRedirects.cache
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\MainWindow.g.cs
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\Pages\CatalogFlowerPage.g.cs
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\App.g.cs
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox_Content.g.cs
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox_MarkupCompile.cache
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox_MarkupCompile.lref
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\MainWindow.baml
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\Pages\CatalogFlowerPage.baml
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.g.resources
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.Properties.Resources.resources
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.csproj.GenerateResource.cache
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.csproj.CoreCompileInputs.cache
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.csproj.CopyComplete
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.exe
+C:\Users\aynur\source\repos\ListBox\ListBox\obj\Debug\ListBox.pdb
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.csproj.AssemblyReference.cache
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.csproj.SuggestedBindingRedirects.cache
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\MainWindow.g.cs
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\Pages\CatalogFlowerPage.g.cs
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\Pages\FlowerGoodPage.g.cs
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\Pages\GoodAddPage.g.cs
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\App.g.cs
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox_Content.g.cs
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox_MarkupCompile.cache
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox_MarkupCompile.lref
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\bin\Debug\ListBox.exe.config
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\bin\Debug\ListBox.exe
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\bin\Debug\ListBox.pdb
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\bin\Debug\EntityFramework.dll
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\bin\Debug\EntityFramework.xml
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\MainWindow.baml
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\Pages\CatalogFlowerPage.baml
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\Pages\FlowerGoodPage.baml
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\Pages\GoodAddPage.baml
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.g.resources
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.Properties.Resources.resources
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.csproj.GenerateResource.cache
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.csproj.CoreCompileInputs.cache
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.csproj.CopyComplete
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.exe
+C:\Users\aynur\source\repos\ListBox — копия\ListBox\obj\Debug\ListBox.pdb
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\ListBox.csproj.AssemblyReference.cache
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\ListBox.csproj.SuggestedBindingRedirects.cache
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\MainWindow.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\Pages\CatalogFlowerPage.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\Pages\FlowerGoodPage.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\Pages\GoodAddPage.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\Pages\ListView.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\Pages\Login.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\Pages\Registration.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\App.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\ListBox_Content.g.cs
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\ListBox_MarkupCompile.cache
+C:\Users\aynur\source\repos\ListBox — копия — копия\ListBox\obj\Debug\ListBox_MarkupCompile.lref

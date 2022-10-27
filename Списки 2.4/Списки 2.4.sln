@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Списки 2.4", "Списки 2.4\Списки 2.4.csproj", "{2AA953F0-519F-47CC-9819-495C3D45EFCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AA953F0-519F-47CC-9819-495C3D45EFCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA953F0-519F-47CC-9819-495C3D45EFCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA953F0-519F-47CC-9819-495C3D45EFCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA953F0-519F-47CC-9819-495C3D45EFCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {389A6606-07FD-4B5A-9D60-E963682BE00B}
+	EndGlobalSection
+EndGlobal

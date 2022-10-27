@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SashModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Auto">
+    <Key>
+      <PropertyRef Name="Id_auto" />
+    </Key>
+    <Property Name="Id_auto" Type="Int32" Nullable="false" />
+    <Property Name="GosNomer" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Marka" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="YearBorn" Type="Int32" />
+    <Property Name="Price" Type="Single" />
+    <Property Name="PriceDay" Type="Single" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DateVidacha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TypeAuto" Relationship="Self.FK_Auto_TypeAuto" FromRole="Auto" ToRole="TypeAuto" />
+    <NavigationProperty Name="SelledAutoes" Relationship="Self.FK_SelledAuto_Auto" FromRole="Auto" ToRole="SelledAuto" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id_client" />
+    </Key>
+    <Property Name="Id_client" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SelledAutoes" Relationship="Self.FK_SelledAuto_Clients" FromRole="Clients" ToRole="SelledAuto" />
+  </EntityType>
+  <EntityType Name="SelledAuto">
+    <Key>
+      <PropertyRef Name="Id_prokat" />
+    </Key>
+    <Property Name="Id_prokat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateVidacha" Type="DateTime" Precision="0" />
+    <Property Name="CountDays" Type="Int32" />
+    <Property Name="Summ" Type="Decimal" Precision="7" Scale="2" />
+    <NavigationProperty Name="Auto" Relationship="Self.FK_SelledAuto_Auto" FromRole="SelledAuto" ToRole="Auto" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_SelledAuto_Clients" FromRole="SelledAuto" ToRole="Clients" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TypeAuto">
+    <Key>
+      <PropertyRef Name="Id_type" />
+    </Key>
+    <Property Name="Id_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Autoes" Relationship="Self.FK_Auto_TypeAuto" FromRole="TypeAuto" ToRole="Auto" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Auto_TypeAuto">
+    <End Role="TypeAuto" Type="Self.TypeAuto" Multiplicity="0..1" />
+    <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_SelledAuto_Auto">
+    <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
+    <End Role="SelledAuto" Type="Self.SelledAuto" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_SelledAuto_Clients">
+    <End Role="Clients" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="SelledAuto" Type="Self.SelledAuto" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="SashEntities6" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Autoes" EntityType="Self.Auto" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="SelledAutoes" EntityType="Self.SelledAuto" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TypeAutoes" EntityType="Self.TypeAuto" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Auto_TypeAuto" Association="Self.FK_Auto_TypeAuto">
+      <End Role="TypeAuto" EntitySet="TypeAutoes" />
+      <End Role="Auto" EntitySet="Autoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SelledAuto_Auto" Association="Self.FK_SelledAuto_Auto">
+      <End Role="Auto" EntitySet="Autoes" />
+      <End Role="SelledAuto" EntitySet="SelledAutoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SelledAuto_Clients" Association="Self.FK_SelledAuto_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="SelledAuto" EntitySet="SelledAutoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

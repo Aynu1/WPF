@@ -1,0 +1,26 @@
+﻿<Window x:Class="PPSash.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPSash"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#c93ab8"/>
+        <Grid Background="#c93ab8" Grid.Row="2"/>
+        <Image Source="/Resources/pngtree-golden-sale-logo-png-image_3618729.jpg" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
+        <TextBlock Text="Прокат автомобилей" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="Black"/>
+        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Grid.Row="0" Background="#02fffc" Content="Назад" Height="30" Width="50" HorizontalAlignment="Right" Visibility="Visible" Click="Button_Click" x:Name="BtnBack"
+                Margin="0 0 10 0"/>
+            <Button Height="30" Background="#02fffc" Width="60" HorizontalAlignment="Right" Margin="0 0 10 0" x:Name="AddBtn" Click="AddBtn_Click" Content="Добавить"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,13 @@
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\GreatBritainApp.csproj.AssemblyReference.cache
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\GreatBritainApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\LoginWindow.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\MainWindow.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\Pages\AddGoodPage.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\Pages\AdditionalGoodsPage.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\Pages\CatalogOfGoodsPage.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\Pages\GoodsPage.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\Pages\SellGoodPage.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\App.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\GreatBritainApp_Content.g.cs
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\GreatBritainApp_MarkupCompile.cache
+C:\Users\aynur\source\repos\GreatBritainApp\GreatBritainApp\obj\Debug\GreatBritainApp_MarkupCompile.lref

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище SashModelContainer" CdmEntityContainer="SashEntities6">
+    <EntitySetMapping Name="Autoes">
+      <EntityTypeMapping TypeName="SashModel.Auto">
+        <MappingFragment StoreEntitySet="Auto">
+          <ScalarProperty Name="Id_auto" ColumnName="Id_auto" />
+          <ScalarProperty Name="GosNomer" ColumnName="GosNomer" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="YearBorn" ColumnName="YearBorn" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="PriceDay" ColumnName="PriceDay" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="DateVidacha" ColumnName="DateVidacha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="SashModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id_client" ColumnName="Id_client" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SelledAutoes">
+      <EntityTypeMapping TypeName="SashModel.SelledAuto">
+        <MappingFragment StoreEntitySet="SelledAuto">
+          <ScalarProperty Name="Id_prokat" ColumnName="Id_prokat" />
+          <ScalarProperty Name="DateVidacha" ColumnName="DateVidacha" />
+          <ScalarProperty Name="CountDays" ColumnName="CountDays" />
+          <ScalarProperty Name="Summ" ColumnName="Summ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SashModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeAutoes">
+      <EntityTypeMapping TypeName="SashModel.TypeAuto">
+        <MappingFragment StoreEntitySet="TypeAuto">
+          <ScalarProperty Name="Id_type" ColumnName="Id_type" />
+          <ScalarProperty Name="NameType" ColumnName="NameType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SashModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Auto_TypeAuto" TypeName="SashModel.FK_Auto_TypeAuto" StoreEntitySet="Auto">
+      <EndProperty Name="TypeAuto">
+        <ScalarProperty Name="Id_type" ColumnName="Type" />
+      </EndProperty>
+      <EndProperty Name="Auto">
+        <ScalarProperty Name="Id_auto" ColumnName="Id_auto" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="Type" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_SelledAuto_Auto" TypeName="SashModel.FK_SelledAuto_Auto" StoreEntitySet="SelledAuto">
+      <EndProperty Name="Auto">
+        <ScalarProperty Name="Id_auto" ColumnName="Id_auto" />
+      </EndProperty>
+      <EndProperty Name="SelledAuto">
+        <ScalarProperty Name="Id_prokat" ColumnName="Id_prokat" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="Id_auto" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_SelledAuto_Clients" TypeName="SashModel.FK_SelledAuto_Clients" StoreEntitySet="SelledAuto">
+      <EndProperty Name="Clients">
+        <ScalarProperty Name="Id_client" ColumnName="Id_client" />
+      </EndProperty>
+      <EndProperty Name="SelledAuto">
+        <ScalarProperty Name="Id_prokat" ColumnName="Id_prokat" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="Id_client" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

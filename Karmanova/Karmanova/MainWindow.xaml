@@ -1,0 +1,32 @@
+﻿<Window x:Class="Karmanova.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Karmanova"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    <Grid>
+        <ScrollViewer>
+        <StackPanel Orientation="Vertical" Background="Azure" Margin="200 0 200 0">
+            <StackPanel>
+                <Image Source="/Resources/turizm.jpg" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200"/>
+                <TextBlock Text="Авторизация" HorizontalAlignment="Center" FontSize="50"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Логин" FontSize="30" Margin="20 0 0 0"/>
+                <TextBox x:Name="Login" Height="40" Width="200" HorizontalAlignment="Left" Margin="39 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Пароль" FontSize="30" Margin="20 20 0 0"/>
+                <TextBox x:Name="Password" Width="200" Margin="20 20 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" >
+                <Button x:Name="Register" Content="Регистрация" Margin="20 20 20 0" FontSize="30" HorizontalAlignment="Center" Width="300"/>
+                <TextBlock Text="Или" FontSize="25" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+                <Button x:Name="Vxod" Content="Войти" Margin="20 20 20 0" FontSize="30" Background="Coral" HorizontalAlignment="Center" Width="300"/>
+            </StackPanel>
+        </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

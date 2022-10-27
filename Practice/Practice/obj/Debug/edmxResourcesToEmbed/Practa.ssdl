@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище PractaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Practa.dbo.User" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameUser" Type="varchar" MaxLength="20" />
+    <Property Name="Login" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="Заказ">
+    <Key>
+      <PropertyRef Name="NumberOrder" />
+    </Key>
+    <Property Name="NumberOrder" Type="int" Nullable="false" />
+    <Property Name="Duration" Type="varchar" MaxLength="20" />
+    <Property Name="IdClient" Type="int" />
+    <Property Name="Id_Yslugi" Type="int" />
+    <Property Name="IdEmployee" Type="int" />
+    <Property Name="DateConclusion" Type="int" />
+    <Property Name="Photo" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Клиент">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="int" Nullable="false" />
+    <Property Name="NameOrganization" Type="varchar" MaxLength="50" />
+    <Property Name="Adress" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="Оборудование">
+    <Key>
+      <PropertyRef Name="IDEquipment" />
+    </Key>
+    <Property Name="IDEquipment" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Processor" Type="varchar" MaxLength="30" />
+    <Property Name="RAM" Type="varchar" MaxLength="30" />
+    <Property Name="DiskArray" Type="varchar" MaxLength="30" />
+    <Property Name="NetworkCard" Type="varchar" MaxLength="30" />
+    <Property Name="VideoCard" Type="varchar" MaxLength="30" />
+    <Property Name="OS" Type="varchar" MaxLength="30" />
+    <Property Name="ProcessorClockSpeed" Type="float" />
+    <Property Name="TotalPhysicalMemory" Type="int" />
+    <Property Name="AmountRAM" Type="int" />
+  </EntityType>
+  <EntityType Name="Оплата">
+    <Key>
+      <PropertyRef Name="IdPayment" />
+    </Key>
+    <Property Name="IdPayment" Type="int" Nullable="false" />
+    <Property Name="DatePayment" Type="date" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="NumberAccount" Type="int" />
+  </EntityType>
+  <EntityType Name="Сотрудники">
+    <Key>
+      <PropertyRef Name="IdEmployee" />
+    </Key>
+    <Property Name="IdEmployee" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="20" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+    <Property Name="Patronymic" Type="varchar" MaxLength="20" />
+    <Property Name="Position" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Счет">
+    <Key>
+      <PropertyRef Name="NumberAccount" />
+    </Key>
+    <Property Name="NumberAccount" Type="int" Nullable="false" />
+    <Property Name="DateDischarge" Type="varchar" MaxLength="20" />
+    <Property Name="AmountPaid" Type="float" />
+    <Property Name="NotePayment" Type="varchar" MaxLength="30" />
+    <Property Name="NumberOrder" Type="int" />
+  </EntityType>
+  <EntityType Name="Услуги">
+    <Key>
+      <PropertyRef Name="Id_Yslugi" />
+    </Key>
+    <Property Name="Id_Yslugi" Type="int" Nullable="false" />
+    <Property Name="PriceMonth" Type="float" />
+    <Property Name="TypeService" Type="varchar" MaxLength="20" />
+    <Property Name="IdEquipment" Type="int" />
+  </EntityType>
+  <Association Name="FK_Заказ_Клиент">
+    <End Role="Клиент" Type="Self.Клиент" Multiplicity="0..1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиент">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказ_Сотрудники">
+    <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудники">
+        <PropertyRef Name="IdEmployee" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказ_Услуги">
+    <End Role="Услуги" Type="Self.Услуги" Multiplicity="0..1" />
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Услуги">
+        <PropertyRef Name="Id_Yslugi" />
+      </Principal>
+      <Dependent Role="Заказ">
+        <PropertyRef Name="Id_Yslugi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Оплата_Счет">
+    <End Role="Счет" Type="Self.Счет" Multiplicity="0..1" />
+    <End Role="Оплата" Type="Self.Оплата" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Счет">
+        <PropertyRef Name="NumberAccount" />
+      </Principal>
+      <Dependent Role="Оплата">
+        <PropertyRef Name="NumberAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Счет_Заказ">
+    <End Role="Заказ" Type="Self.Заказ" Multiplicity="0..1" />
+    <End Role="Счет" Type="Self.Счет" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заказ">
+        <PropertyRef Name="NumberOrder" />
+      </Principal>
+      <Dependent Role="Счет">
+        <PropertyRef Name="NumberOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Услуги_Оборудование">
+    <End Role="Оборудование" Type="Self.Оборудование" Multiplicity="0..1" />
+    <End Role="Услуги" Type="Self.Услуги" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Оборудование">
+        <PropertyRef Name="IDEquipment" />
+      </Principal>
+      <Dependent Role="Услуги">
+        <PropertyRef Name="IdEquipment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище PractaModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Заказ" EntityType="Self.Заказ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Клиент" EntityType="Self.Клиент" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Оборудование" EntityType="Self.Оборудование" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Оплата" EntityType="Self.Оплата" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Счет" EntityType="Self.Счет" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Услуги" EntityType="Self.Услуги" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [User].[IdUser] AS [IdUser], 
+    [User].[NameUser] AS [NameUser], 
+    [User].[Login] AS [Login], 
+    [User].[Password] AS [Password]
+    FROM [dbo].[User] AS [User]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Заказ_Клиент" Association="Self.FK_Заказ_Клиент">
+      <End Role="Клиент" EntitySet="Клиент" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказ_Сотрудники" Association="Self.FK_Заказ_Сотрудники">
+      <End Role="Сотрудники" EntitySet="Сотрудники" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказ_Услуги" Association="Self.FK_Заказ_Услуги">
+      <End Role="Услуги" EntitySet="Услуги" />
+      <End Role="Заказ" EntitySet="Заказ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Оплата_Счет" Association="Self.FK_Оплата_Счет">
+      <End Role="Счет" EntitySet="Счет" />
+      <End Role="Оплата" EntitySet="Оплата" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Счет_Заказ" Association="Self.FK_Счет_Заказ">
+      <End Role="Заказ" EntitySet="Заказ" />
+      <End Role="Счет" EntitySet="Счет" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Услуги_Оборудование" Association="Self.FK_Услуги_Оборудование">
+      <End Role="Оборудование" EntitySet="Оборудование" />
+      <End Role="Услуги" EntitySet="Услуги" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

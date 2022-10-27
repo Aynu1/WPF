@@ -1,0 +1,27 @@
+﻿<Window x:Class="ReadyProduct.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReadyProduct"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#c93ab8"/>
+        <Grid Background="#c93ab8" Grid.Row="2"/>
+        <Image Source="/Resources/4thfebruary-bladi-one-slab-4f.jpg" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
+        <TextBlock Text="Готовые продукты питания" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center" Foreground="Black"/>
+        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Grid.Row="0" Content="Назад" Height="30" Width="50" HorizontalAlignment="Right" Visibility="Visible" Click="Button_Click" x:Name="BtnBack"
+                Margin="0 0 10 0"/>
+            <Button x:Name="Korzina" Content="Корзина" Height="30" Width="50" Click="Korzina_Click"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>

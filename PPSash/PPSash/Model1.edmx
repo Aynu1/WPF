@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SashModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="Id_auto" />
+          </Key>
+          <Property Name="Id_auto" Type="int" Nullable="false" />
+          <Property Name="GosNomer" Type="varchar" MaxLength="10" />
+          <Property Name="Marka" Type="varchar" MaxLength="30" />
+          <Property Name="Model" Type="varchar" MaxLength="30" />
+          <Property Name="YearBorn" Type="int" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Price" Type="real" />
+          <Property Name="PriceDay" Type="real" />
+          <Property Name="Image" Type="varchar" MaxLength="200" />
+          <Property Name="DateVidacha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id_client" />
+          </Key>
+          <Property Name="Id_client" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Otchestvo" Type="varchar" MaxLength="50" />
+          <Property Name="Adress" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SelledAuto">
+          <Key>
+            <PropertyRef Name="Id_prokat" />
+          </Key>
+          <Property Name="Id_prokat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_client" Type="int" />
+          <Property Name="Id_auto" Type="int" />
+          <Property Name="DateVidacha" Type="date" />
+          <Property Name="CountDays" Type="int" />
+          <Property Name="Summ" Type="decimal" Precision="7" Scale="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeAuto">
+          <Key>
+            <PropertyRef Name="Id_type" />
+          </Key>
+          <Property Name="Id_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameType" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Sash.dbo.Users" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="10" />
+          <Property Name="Password" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Auto_TypeAuto">
+          <End Role="TypeAuto" Type="Self.TypeAuto" Multiplicity="0..1" />
+          <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAuto">
+              <PropertyRef Name="Id_type" />
+            </Principal>
+            <Dependent Role="Auto">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SelledAuto_Auto">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
+          <End Role="SelledAuto" Type="Self.SelledAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="Id_auto" />
+            </Principal>
+            <Dependent Role="SelledAuto">
+              <PropertyRef Name="Id_auto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SelledAuto_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="SelledAuto" Type="Self.SelledAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id_client" />
+            </Principal>
+            <Dependent Role="SelledAuto">
+              <PropertyRef Name="Id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SashModelContainer">
+          <EntitySet Name="Auto" EntityType="Self.Auto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SelledAuto" EntityType="Self.SelledAuto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeAuto" EntityType="Self.TypeAuto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Users].[ID] AS [ID], 
+    [Users].[Login] AS [Login], 
+    [Users].[Password] AS [Password]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Auto_TypeAuto" Association="Self.FK_Auto_TypeAuto">
+            <End Role="TypeAuto" EntitySet="TypeAuto" />
+            <End Role="Auto" EntitySet="Auto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SelledAuto_Auto" Association="Self.FK_SelledAuto_Auto">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="SelledAuto" EntitySet="SelledAuto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SelledAuto_Clients" Association="Self.FK_SelledAuto_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="SelledAuto" EntitySet="SelledAuto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SashModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="Id_auto" />
+          </Key>
+          <Property Name="Id_auto" Type="Int32" Nullable="false" />
+          <Property Name="GosNomer" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Marka" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="YearBorn" Type="Int32" />
+          <Property Name="Price" Type="Single" />
+          <Property Name="PriceDay" Type="Single" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DateVidacha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TypeAuto" Relationship="Self.FK_Auto_TypeAuto" FromRole="Auto" ToRole="TypeAuto" />
+          <NavigationProperty Name="SelledAutoes" Relationship="Self.FK_SelledAuto_Auto" FromRole="Auto" ToRole="SelledAuto" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id_client" />
+          </Key>
+          <Property Name="Id_client" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SelledAutoes" Relationship="Self.FK_SelledAuto_Clients" FromRole="Clients" ToRole="SelledAuto" />
+        </EntityType>
+        <EntityType Name="SelledAuto">
+          <Key>
+            <PropertyRef Name="Id_prokat" />
+          </Key>
+          <Property Name="Id_prokat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateVidacha" Type="DateTime" Precision="0" />
+          <Property Name="CountDays" Type="Int32" />
+          <Property Name="Summ" Type="Decimal" Precision="7" Scale="2" />
+          <NavigationProperty Name="Auto" Relationship="Self.FK_SelledAuto_Auto" FromRole="SelledAuto" ToRole="Auto" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_SelledAuto_Clients" FromRole="SelledAuto" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeAuto">
+          <Key>
+            <PropertyRef Name="Id_type" />
+          </Key>
+          <Property Name="Id_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Autoes" Relationship="Self.FK_Auto_TypeAuto" FromRole="TypeAuto" ToRole="Auto" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Auto_TypeAuto">
+          <End Role="TypeAuto" Type="Self.TypeAuto" Multiplicity="0..1" />
+          <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_SelledAuto_Auto">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
+          <End Role="SelledAuto" Type="Self.SelledAuto" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_SelledAuto_Clients">
+          <End Role="Clients" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="SelledAuto" Type="Self.SelledAuto" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SashEntities6" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autoes" EntityType="Self.Auto" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="SelledAutoes" EntityType="Self.SelledAuto" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TypeAutoes" EntityType="Self.TypeAuto" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Auto_TypeAuto" Association="Self.FK_Auto_TypeAuto">
+            <End Role="TypeAuto" EntitySet="TypeAutoes" />
+            <End Role="Auto" EntitySet="Autoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SelledAuto_Auto" Association="Self.FK_SelledAuto_Auto">
+            <End Role="Auto" EntitySet="Autoes" />
+            <End Role="SelledAuto" EntitySet="SelledAutoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SelledAuto_Clients" Association="Self.FK_SelledAuto_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="SelledAuto" EntitySet="SelledAutoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SashModelContainer" CdmEntityContainer="SashEntities6">
+          <EntitySetMapping Name="Autoes">
+            <EntityTypeMapping TypeName="SashModel.Auto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Id_auto" ColumnName="Id_auto" />
+                <ScalarProperty Name="GosNomer" ColumnName="GosNomer" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="YearBorn" ColumnName="YearBorn" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PriceDay" ColumnName="PriceDay" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="DateVidacha" ColumnName="DateVidacha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="SashModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Id_client" ColumnName="Id_client" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SelledAutoes">
+            <EntityTypeMapping TypeName="SashModel.SelledAuto">
+              <MappingFragment StoreEntitySet="SelledAuto">
+                <ScalarProperty Name="Id_prokat" ColumnName="Id_prokat" />
+                <ScalarProperty Name="DateVidacha" ColumnName="DateVidacha" />
+                <ScalarProperty Name="CountDays" ColumnName="CountDays" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SashModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeAutoes">
+            <EntityTypeMapping TypeName="SashModel.TypeAuto">
+              <MappingFragment StoreEntitySet="TypeAuto">
+                <ScalarProperty Name="Id_type" ColumnName="Id_type" />
+                <ScalarProperty Name="NameType" ColumnName="NameType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SashModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Auto_TypeAuto" TypeName="SashModel.FK_Auto_TypeAuto" StoreEntitySet="Auto">
+            <EndProperty Name="TypeAuto">
+              <ScalarProperty Name="Id_type" ColumnName="Type" />
+            </EndProperty>
+            <EndProperty Name="Auto">
+              <ScalarProperty Name="Id_auto" ColumnName="Id_auto" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Type" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SelledAuto_Auto" TypeName="SashModel.FK_SelledAuto_Auto" StoreEntitySet="SelledAuto">
+            <EndProperty Name="Auto">
+              <ScalarProperty Name="Id_auto" ColumnName="Id_auto" />
+            </EndProperty>
+            <EndProperty Name="SelledAuto">
+              <ScalarProperty Name="Id_prokat" ColumnName="Id_prokat" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_auto" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SelledAuto_Clients" TypeName="SashModel.FK_SelledAuto_Clients" StoreEntitySet="SelledAuto">
+            <EndProperty Name="Clients">
+              <ScalarProperty Name="Id_client" ColumnName="Id_client" />
+            </EndProperty>
+            <EndProperty Name="SelledAuto">
+              <ScalarProperty Name="Id_prokat" ColumnName="Id_prokat" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_client" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

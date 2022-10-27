@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProdaSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Жанр">
+    <Key>
+      <PropertyRef Name="IdGenre" />
+    </Key>
+    <Property Name="IdGenre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Genre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Продажи" Relationship="Self.FK_Продажи_Жанр" FromRole="Жанр" ToRole="Продажи" />
+  </EntityType>
+  <EntityType Name="Издательство">
+    <Key>
+      <PropertyRef Name="IdPublish" />
+    </Key>
+    <Property Name="IdPublish" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Продажи" Relationship="Self.FK_Продажи_Издательство" FromRole="Издательство" ToRole="Продажи" />
+  </EntityType>
+  <EntityType Name="Продажи">
+    <Key>
+      <PropertyRef Name="IdSell" />
+      <PropertyRef Name="IdGenre" />
+      <PropertyRef Name="IdPublish" />
+    </Key>
+    <Property Name="IdSell" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="NameBook" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdGenre" Type="Int32" Nullable="false" />
+    <Property Name="IdPublish" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="DatePublish" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Жанр" Relationship="Self.FK_Продажи_Жанр" FromRole="Продажи" ToRole="Жанр" />
+    <NavigationProperty Name="Издательство" Relationship="Self.FK_Продажи_Издательство" FromRole="Продажи" ToRole="Издательство" />
+  </EntityType>
+  <Association Name="FK_Продажи_Жанр">
+    <End Role="Жанр" Type="Self.Жанр" Multiplicity="1" />
+    <End Role="Продажи" Type="Self.Продажи" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Жанр">
+        <PropertyRef Name="IdGenre" />
+      </Principal>
+      <Dependent Role="Продажи">
+        <PropertyRef Name="IdGenre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Продажи_Издательство">
+    <End Role="Издательство" Type="Self.Издательство" Multiplicity="1" />
+    <End Role="Продажи" Type="Self.Продажи" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Издательство">
+        <PropertyRef Name="IdPublish" />
+      </Principal>
+      <Dependent Role="Продажи">
+        <PropertyRef Name="IdPublish" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProdaSEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Жанр" EntityType="Self.Жанр" />
+    <EntitySet Name="Издательство" EntityType="Self.Издательство" />
+    <EntitySet Name="Продажи" EntityType="Self.Продажи" />
+    <AssociationSet Name="FK_Продажи_Жанр" Association="Self.FK_Продажи_Жанр">
+      <End Role="Жанр" EntitySet="Жанр" />
+      <End Role="Продажи" EntitySet="Продажи" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Продажи_Издательство" Association="Self.FK_Продажи_Издательство">
+      <End Role="Издательство" EntitySet="Издательство" />
+      <End Role="Продажи" EntitySet="Продажи" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

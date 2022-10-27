@@ -1,0 +1,16 @@
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\bin\Debug\FlowersShop.exe.config
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\bin\Debug\FlowersShop.exe
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\bin\Debug\FlowersShop.pdb
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop.csproj.AssemblyReference.cache
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop.csproj.SuggestedBindingRedirects.cache
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\MainWindow.g.cs
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\App.g.cs
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop_MarkupCompile.cache
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop_MarkupCompile.lref
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\MainWindow.baml
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop.g.resources
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop.Properties.Resources.resources
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop.csproj.GenerateResource.cache
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop.csproj.CoreCompileInputs.cache
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop.exe
+C:\Users\aynur\source\repos\FlowersShop\FlowersShop\obj\Debug\FlowersShop.pdb
